@@ -1,0 +1,25 @@
+<div class="signUp">
+    <div class="container">
+        <div class="card p-4 mx-auto w-50 mt-5">
+            <form [formGroup]="signUpForm" (ngSubmit) = "signUp(signUpForm.value)">
+                <div class="form-group mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" formControlName="name">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="name">Phone Number</label>
+                    <input type="number" class="form-control" placeholder="Enter your phone number" formControlName="phone">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
