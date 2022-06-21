@@ -1,18 +1,40 @@
 <app-header></app-header>
 
-<div class="main-header">
-    <div class="header-1">
-        <div class="row">
-            <div class="col-2">
-                <img src="" alt="">
+<div class="landing">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let image of images; let i = index;" [ngClass]="i == 0 ? 'active' : '' ">
+                <img src="../../../assets/{{image}}.jpg" class="d-block w-100 banner" alt="...">
             </div>
-            <div class="col-6">
-                <input type="text" name="" id="">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container">
+        <div class="products">
+            <div class="d-flex flex-wrap ps-3">
+                <div class="card mb-5 p-4 me-4" style="width: 18rem;" *ngFor = "let product of products; let j = index;">
+                    <h5 class="card-title"> {{ product.title }} </h5>
+                    <img src="{{product.thumbnail}}" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                        <p class="card-text"> {{ product.description }} </p>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-primary">₹ {{ product.price }} </a>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="header-2"></div>
 </div>
 
 <app-footer></app-footer>

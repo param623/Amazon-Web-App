@@ -1,0 +1,22 @@
+.footer {
+    background-color: #232f3e;
+    width: 100%;
+}
+.heading {
+    font: normal normal bold 16px / 18px Roboto;
+    color: white; 
+}
+
+.lists li a {
+    font: normal normal normal 14px / 16px Roboto;
+    color: white;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+.lists li a:hover {
+    text-decoration: underline;
+    color: white;
+}
+li {
+    list-style: none;
+}
