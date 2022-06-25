@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="landing">
+<div class="landing" *ngIf="!showProductDetailPage">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let image of images; let i = index;" [ngClass]="i == 0 ? 'active' : '' ">
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="products">
             <div class="d-flex flex-wrap ps-3">
-                <div class="card mb-5 p-4 me-4" style="width: 18rem;" *ngFor = "let product of products; let j = index;">
+                <div class="card mb-5 p-4 me-4 cursor" style="width: 18rem;" *ngFor = "let product of products; let j = index;" (click)="productDetail(product)">
                     <h5 class="card-title"> {{ product.title }} </h5>
                     <img src="{{product.thumbnail}}" class="card-img-top product-img" alt="...">
                     <div class="card-body">
@@ -36,5 +36,7 @@
         </div>
     </div>
 </div>
+
+<app-product-detail [selectedProduct]="selectedProduct" *ngIf="showProductDetailPage"></app-product-detail>
 
 <app-footer></app-footer>

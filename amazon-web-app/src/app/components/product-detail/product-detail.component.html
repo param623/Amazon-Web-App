@@ -1,0 +1,40 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-1">
+            <div class="d-flex flex-column">
+                <div *ngFor ="let img of selectedProduct.images;let i = index;" class="sub-images mb-2" (mouseenter)="onHoverImage(img)">
+                    <img src="{{ img }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="main-image">
+                <img [src]="currentImage" alt="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-flex flex-column">
+                <p class="font-18-400">  {{ selectedProduct.title }} - {{ selectedProduct.description }} </p>
+                <p class="rating">
+                    <!-- <bar-rating class="star" [rate]="selectedProduct.rating" [max]="5" ></bar-rating> -->
+                </p>
+                <p>
+                    <span class="grey-text font-16-400"> M.R.P.: </span>
+                    <span class="red-text font-16-400" style="text-decoration:line-through;"> ₹ {{ currentMRP }} </span>
+                </p>
+                <p>
+                    <span class="grey-text font-16-400"> Deal Price: </span>
+                    <span class="red-text font-16-500"> ₹ {{ selectedProduct.price }} </span>
+                </p>
+                <p>
+                    <span class="grey-text font-16-400"> You Save: </span>
+                    <span class="red-text font-16-400"> ₹ {{ discountPrice }}  {{ "( " + selectedProduct.discountPercentage + "% )" }} </span>
+                </p>
+                <p>
+                    <button class="buy-button w-25 me-3">Buy Now</button>
+                    <button class="cart-button w-25">Add to Cart</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-landing',
@@ -9,7 +10,9 @@ import { ProductService } from 'src/app/services/product.service';
 export class LandingComponent implements OnInit {
 
   images: any = ["landing_1", "landing_2", "landing_3", "landing_4", "landing_5", "landing_6", "landing_7", "landing_8"];
-  products: any = [];
+  products!: Product[];
+  selectedProduct!: Product;
+  showProductDetailPage: boolean = false;
   constructor(
     private _productService: ProductService
   ) { }
@@ -25,6 +28,11 @@ export class LandingComponent implements OnInit {
     }, err => {
       console.log("Something went wrong.")
     });
+  }
+
+  productDetail(product: Product) {
+    this.showProductDetailPage = !this.showProductDetailPage;
+    this.selectedProduct = product;
   }
 
 }
