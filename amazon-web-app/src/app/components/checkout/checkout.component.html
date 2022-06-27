@@ -1,0 +1,28 @@
+<div class="container py-5 checkout">
+    <div class="back mb-5">
+        <button class="btn btn-secondary" (click)="back()"> Back </button>
+    </div>
+    <div class="d-flex">
+        <div class="checkout_left me-3">
+            <div class="checkout-empty" *ngIf="_shoppingCartItemsService.getCartLength() == 0">
+                <h2 class="font-18-500">Your shopping basket is Empty.</h2>
+                <p class="font-18-400">You have no items in your basket.</p>
+            </div>
+            <div class="checkout-not-empty" *ngIf="_shoppingCartItemsService.getCartLength() != 0">
+                <p class="font-18-700"> Shopping Cart </p>
+                <app-checkout-product [checkout_products]="cartItems"></app-checkout-product>
+            </div>
+        </div>
+        <div class="checkout_right mt-4" *ngIf="_shoppingCartItemsService.getCartLength() != 0">
+            <div class="card p-3">
+                <div class="card-body">
+                    <p>
+                        <span class="font-18-400">Subtotal({{ _shoppingCartItemsService.getCartLength()}} items):</span>
+                        <span class="font-18-700"> ₹ {{ _shoppingCartItemsService.getTotal() }} </span>
+                    </p>
+                    <button class="buy-button w-100"> Proceed to checkout </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CheckoutProductComponent } from './components/checkout-product/checkout-product.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     HeaderComponent,
     FooterComponent,
     ProductDetailComponent,
+    CheckoutComponent,
+    CheckoutProductComponent,
   ],
   imports: [
     BrowserModule,

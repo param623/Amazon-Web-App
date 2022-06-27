@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
+import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +16,9 @@ export class LandingComponent implements OnInit {
   selectedProduct!: Product;
   showProductDetailPage: boolean = false;
   constructor(
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _shoppingCartItemsService: ShoppingCartItemsService,
+    private _route: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,4 +39,11 @@ export class LandingComponent implements OnInit {
     this.selectedProduct = product;
   }
 
+  addToCart(product: Product) {
+    this._shoppingCartItemsService.addCartItem(product);
+  }
+
+  back() {
+    this.showProductDetailPage = !this.showProductDetailPage;
+  }
 }

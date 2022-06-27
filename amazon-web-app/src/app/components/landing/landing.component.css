@@ -20,3 +20,6 @@
 .carousel-control-prev, .carousel-control-next {
     top: -300px;
 }
+.buy-button, .cart-button {
+    border-radius: 5px;
+}
