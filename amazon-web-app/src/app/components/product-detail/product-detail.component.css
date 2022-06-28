@@ -24,3 +24,6 @@
   --br-active-color: #ed7b67;
   --br-inactive-color: #d2d2d2;
 }
+.product-detail {
+  min-height: 100vh;
+}

@@ -42,4 +42,21 @@ export class ShoppingCartItemsService {
 
     return total;
   }
+
+  deleteProduct = ( product: Product ) => {
+    let items = this.getCartItem();
+
+    if(items) {
+      const deleteditem = items.find( (item : any) => {
+        return item.id === product.id;
+      });
+      if(deleteditem) {
+        let index = items.indexOf(deleteditem);
+        items.splice(index, 1);
+        window.localStorage.setItem('shopping_cart', JSON.stringify(items));
+        this.getTotal();
+        this.getCartLength();
+      }
+    }
+  }
 }

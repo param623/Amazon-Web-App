@@ -1,9 +1,11 @@
 
-<div class="landing" *ngIf="!showProductDetailPage">
+<div class="landing header-padding" *ngIf="!showProductDetailPage">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let image of images; let i = index;" [ngClass]="i == 0 ? 'active' : '' ">
-                <img src="../../../assets/{{image}}.jpg" class="d-block w-100 banner" alt="...">
+                <a href="https://www.amazon.in/" target="_blank">
+                    <img src="../../../assets/{{image}}.jpg" class="d-block w-100 banner" alt="...">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

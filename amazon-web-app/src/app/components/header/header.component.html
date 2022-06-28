@@ -5,10 +5,12 @@
                 <img src="../../../assets/amazon_PNG24.png" alt="" class="logo">
             </div>
             <div class="col-7">
-                <input type="text" name="" id="" class="w-100 searchBar">
-                <span class="icon">
-                    <mat-icon>search</mat-icon>
-                </span>
+                <form #searchProduct="ngForm" (ngSubmit)="filterProducts(searchProduct.value)">
+                    <input type="text" name="searchValue" id="" class="w-100 searchBar" [(ngModel)] = "searchValue">
+                    <button class="btn icon position-absolute" type="submit">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </form>
             </div>
             <div class="col-1 my-auto">
                 <span class="small d-block">Hello, Param</span>
@@ -18,9 +20,10 @@
                 <span class="small d-block">Returns</span>
                 <span class="dark">& Orders</span>
             </div>
-            <div class="col-1 my-auto cursor" (click)="cartPage()" style="z-index: 2;">
+            <div class="col-1 my-auto cursor" (click)="cartPage()" style="z-index: 5;">
                 <mat-icon style="color: white;">add_shopping_cart</mat-icon>
-                <span class="cartItem font-16-500" style="color: white;"> {{ _shoppingCartItemsService.getCartLength() }} </span>
+                <span class="cartItem font-16-500" style="color: white;"> {{ _shoppingCartItemsService.getCartLength()
+                    }} </span>
             </div>
         </div>
     </div>

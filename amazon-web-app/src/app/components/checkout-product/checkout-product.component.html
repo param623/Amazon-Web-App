@@ -12,7 +12,7 @@
             <p class="font-18-700"> {{ product.title }} </p>
             <p class="stock-color"> In stock </p>
             <div class="d-flex mb-3">
-                <a class="me-2">Delete | </a>
+                <a class="me-2 cursor" (click)="deleteProduct(product)">Delete | </a>
                 <a class="me-2">Save For Later | </a>
                 <a class="me-2">Compare with similar items</a>
             </div>

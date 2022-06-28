@@ -61,3 +61,7 @@ body {
 .stock-color {
   color: #007600;
 }
+
+.header-padding {
+  padding-top: 115px !important;
+}

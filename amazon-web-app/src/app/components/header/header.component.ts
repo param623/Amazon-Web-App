@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   cartItems: number = 0;
+  products: Product[] = [];
+  searchValue: string = ''
+  filteredProducts: Product[] = [];
   constructor(
     public _shoppingCartItemsService: ShoppingCartItemsService,
-    private _route: Router
+    private _route: Router,
+    private _productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -23,5 +29,9 @@ export class HeaderComponent implements OnInit {
 
   cartPage() {
     this._route.navigate(['checkout']);
+  }
+
+  filterProducts( seach: any ) {
+    
   }
 }
