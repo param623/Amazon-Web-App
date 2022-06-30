@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <div class="landing header-padding" *ngIf="!showProductDetailPage">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -22,9 +22,11 @@
     <div class="container">
         <div class="products">
             <div class="d-flex flex-wrap ps-3">
-                <div class="card mb-5 p-4 me-4 cursor" style="width: 18rem;" *ngFor = "let product of products; let j = index;">
+                <div class="card mb-5 p-4 me-4 cursor" style="width: 18rem;"
+                    *ngFor="let product of products; let j = index;">
                     <h5 class="card-title"> {{ product.title }} </h5>
-                    <img src="{{product.thumbnail}}" class="card-img-top product-img" alt="..." (click)="productDetail(product)">
+                    <img src="{{product.thumbnail}}" class="card-img-top product-img" alt="..."
+                        (click)="productDetail(product)">
                     <div class="card-body">
                         <p class="card-text" (click)="productDetail(product)"> {{ product.description }} </p>
                         <div class="d-flex justify-content-between">
@@ -38,4 +40,7 @@
     </div>
 </div>
 
-<app-product-detail [selectedProduct]="selectedProduct" *ngIf="showProductDetailPage" (goBack)="back()"></app-product-detail>
+<app-product-detail [selectedProduct]="selectedProduct" *ngIf="showProductDetailPage" (goBack)="back()">
+</app-product-detail>
+
+<app-footer></app-footer>

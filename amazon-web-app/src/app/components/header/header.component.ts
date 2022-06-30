@@ -34,4 +34,8 @@ export class HeaderComponent implements OnInit {
   filterProducts( seach: any ) {
     
   }
+
+  login() {
+    this._route.navigate(['signUp']);
+  }
 }

@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.selectedProduct);
+    this.scrollTop();
     this.currentImage = this.selectedProduct.images[0];
 
     this.currentMRP = this.selectedProduct.price + ((this.selectedProduct.price * this.selectedProduct.discountPercentage) / 100);
@@ -33,6 +33,10 @@ export class ProductDetailComponent implements OnInit {
 
   onHoverImage(image: string) {
     this.currentImage = image;
+  }
+
+  scrollTop(){
+    window.scrollTo(0,0);
   }
 
   addToCart() {

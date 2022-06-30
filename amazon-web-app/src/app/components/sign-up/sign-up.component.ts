@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccountService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,15 +24,16 @@ export class SignUpComponent implements OnInit {
 
     this.signUpForm = this.formBuilder.group({
       name: [''],
-      phone: [''],
+      phoneNumber: [''],
       email : [''],
       password: ['']
     })
 
   }
 
-  signUp( form: any) {
+  signUp( form: User) {
     this._accountService.signUp(form).subscribe( res=> {
+      window.localStorage.setItem('userAmazon', JSON.stringify(form));
       this.route.navigate(['login']);
     },err=> {
       alert("Something Went Wrong");
