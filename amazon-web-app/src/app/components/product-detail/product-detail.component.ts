@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,19 +11,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() selectedProduct!: Product;
-  @Output() goBack: EventEmitter<any>= new EventEmitter();
+  selectedProduct!: Product
   currentImage: string = '';
-  currentMRP : number = 0;
+  currentMRP: number = 0;
   discountPrice: number = 0;
   shoppingCartItems: Product[] = [];
   constructor(
     private _shoppingCartItemsService: ShoppingCartItemsService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _productService: ProductService,
+    private _location: Location
   ) { }
 
   ngOnInit(): void {
     this.scrollTop();
+    this._activatedRoute.paramMap.subscribe(param => {
+      let productId = param.get('id');
+      if (productId) {
+        let id = +productId
+        this.getProductById(id);
+      }
+    });
+
+  }
+
+  priceCalculation() {
     this.currentImage = this.selectedProduct.images[0];
 
     this.currentMRP = this.selectedProduct.price + ((this.selectedProduct.price * this.selectedProduct.discountPercentage) / 100);
@@ -35,8 +50,15 @@ export class ProductDetailComponent implements OnInit {
     this.currentImage = image;
   }
 
-  scrollTop(){
-    window.scrollTo(0,0);
+  getProductById(id: number) {
+    this._productService.getProductById(id).subscribe(res => {
+      this.selectedProduct = res;
+      this.priceCalculation();
+    });
+  }
+
+  scrollTop() {
+    window.scrollTo(0, 0);
   }
 
   addToCart() {
@@ -49,7 +71,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   back() {
-    this.goBack.emit();
+    this._location.back();
   }
 
 }

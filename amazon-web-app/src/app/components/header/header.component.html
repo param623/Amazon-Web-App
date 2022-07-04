@@ -4,7 +4,7 @@
             <div class="col-2 text-center cursor" (click)="landingPage()">
                 <img src="../../../assets/amazon_PNG24.png" alt="" class="logo">
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 <form #searchProduct="ngForm" (ngSubmit)="filterProducts(searchProduct.value)">
                     <input type="text" name="searchValue" id="" class="w-100 searchBar" [(ngModel)] = "searchValue">
                     <button class="btn icon position-absolute" type="submit">
@@ -16,7 +16,7 @@
                 <span class="small d-block">Hello, Param</span>
                 <span class="dark">Account & Lists</span>
             </div>
-            <div class="col-1 my-auto">
+            <div class="col-1 my-auto ps-4">
                 <span class="small d-block">Returns</span>
                 <span class="dark">& Orders</span>
             </div>
@@ -24,6 +24,9 @@
                 <mat-icon style="color: white;vertical-align: bottom;">add_shopping_cart</mat-icon>
                 <span class="cartItem font-18-500" style="color: white;"> {{ _shoppingCartItemsService.getCartLength()
                     }} </span>
+            </div>
+            <div class="col-1 m-auto ">
+                <span class="dark" (click)="logOut()"> Logout </span>
             </div>
         </div>
     </div>

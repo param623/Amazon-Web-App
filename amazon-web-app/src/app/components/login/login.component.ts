@@ -11,6 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class LoginComponent implements OnInit {
 
   public loginForm !: FormGroup;
+  userId?: string | null;
   constructor(
     private formBuilder:FormBuilder,
     private _accountService: AccountService,
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   login(login: any) {
     this._accountService.login().subscribe( (res) => {
       const chkuser = res.find( (value:any) => {
-        return login.email == value.email && login.password == value.password;
+        return login.email == value.email && login.password == value.password && this.userId == value.id;
       });
 
       if(chkuser) {

@@ -14,14 +14,19 @@ export class AccountService {
   ) { }
 
   login(): Observable<any>{
-    return this.http.get(this.pathApi + "userData");
+    return this.http.get(this.pathApi + "users");
   }
 
   signUp(body: User): Observable<any> {
-    return this.http.post<any>(this.pathApi + "userData" , body);
+    return this.http.post<any>(this.pathApi + "users" , body);
   }
 
-  isUserLoggedIn() {
-    
+  getUserId() {
+    let userId = window.localStorage.getItem("userAmazon");
+    if(userId) {
+      return userId
+    } else {
+      return null
+    }
   }
 }

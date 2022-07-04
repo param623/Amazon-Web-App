@@ -38,4 +38,9 @@ export class HeaderComponent implements OnInit {
   login() {
     this._route.navigate(['signUp']);
   }
+
+  logOut() {
+    this._route.navigate(['login']);
+    window.localStorage.setItem("user", '');
+  }
 }

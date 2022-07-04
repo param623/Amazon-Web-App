@@ -8,11 +8,11 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: "/landing", pathMatch: "full"},
+  { path: '', redirectTo: "/login", pathMatch: "full"},
   { path: 'login', component:LoginComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'landing', component: LandingComponent },
-  { path: 'product', component: ProductDetailComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
   { path: 'checkout', component: CheckoutComponent }
 ];
 

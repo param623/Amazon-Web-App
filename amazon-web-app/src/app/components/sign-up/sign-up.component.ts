@@ -33,9 +33,10 @@ export class SignUpComponent implements OnInit {
 
   signUp( form: User) {
     this._accountService.signUp(form).subscribe( res=> {
-      window.localStorage.setItem('userAmazon', JSON.stringify(form));
+      window.localStorage.setItem('userAmazon', res.id);
       this.route.navigate(['login']);
     },err=> {
+      this.route.navigate(['signUp']);
       alert("Something Went Wrong");
     });
   }
