@@ -21,12 +21,4 @@ export class AccountService {
     return this.http.post<any>(this.pathApi + "users" , body);
   }
 
-  getUserId() {
-    let userId = window.localStorage.getItem("userAmazon");
-    if(userId) {
-      return userId
-    } else {
-      return null
-    }
-  }
 }

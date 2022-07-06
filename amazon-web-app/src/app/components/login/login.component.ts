@@ -30,10 +30,11 @@ export class LoginComponent implements OnInit {
   login(login: any) {
     this._accountService.login().subscribe( (res) => {
       const chkuser = res.find( (value:any) => {
-        return login.email == value.email && login.password == value.password && this.userId == value.id;
+        return login.email == value.email && login.password == value.password;
       });
 
       if(chkuser) {
+        window.localStorage.setItem('currentUser', JSON.stringify(chkuser));
         this._route.navigate(['landing']);
       } else {
         alert("Something Went Wrong");

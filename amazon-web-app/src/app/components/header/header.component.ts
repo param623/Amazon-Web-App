@@ -32,7 +32,11 @@ export class HeaderComponent implements OnInit {
   }
 
   filterProducts( seach: any ) {
-    
+    this._productService.filterProduct(this.searchValue).subscribe( res =>{
+      this._productService.updateProduct.emit(res);
+    }, err => {
+      alert("Not Found");
+    });
   }
 
   login() {

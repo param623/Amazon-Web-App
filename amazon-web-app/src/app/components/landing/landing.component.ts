@@ -25,17 +25,10 @@ export class LandingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUserId();
+    this._productService.updateProduct.subscribe( ( res) => {
+      this.products = res;
+    });
     this.getProducts();
-  }
-
-  getUserId() {
-    if(this._accountService.getUserId != null) {
-      this.userId = this._accountService.getUserId();
-    } else {
-      this.userId = null
-      this._route.navigate(['signUp']);
-    }
   }
 
   getProducts() {
